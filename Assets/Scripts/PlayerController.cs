@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI hpText;
     public void OnMove(InputAction.CallbackContext context)
     {
-        move = context.ReadValue<Vector2>();
+        move = context.ReadValue<Vector2>(); 
     }
     public void OnMouselook(InputAction.CallbackContext context)
     {
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         hpText.text = playerHP.ToString();
+        
     }
 
     // Update is called once per frame
@@ -58,9 +59,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     public void MovePlayer()
     {
-        Vector3 movement = new Vector3(move.x, 0f, move.y);
+        Vector3 movement = new Vector3(move.x, 0f, move.y); 
         if(movement != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), TurnSpeed);
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }
+
     public void MoveplayerWithAim()
     {
         var lookPos = rotationTarget - transform.position;
@@ -109,4 +112,5 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+     
 }
